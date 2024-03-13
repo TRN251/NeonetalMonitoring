@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org1">
+<head>
+	<title>Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="login/images/icons/favicon.ico"/>
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="login/vendor/bootstrap/css/bootstrap.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="login/vendor/animate/animate.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="login/vendor/css-hamburgers/hamburgers.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="login/vendor/select2/select2.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="login/css/util.css">
+	<link rel="stylesheet" type="text/css" href="login/css/main.css">
+	<!--===============================================================================================-->
+</head>
+<body>
+
+<div class="limiter">
+	<div class="container-login100">
+
+		<div class="wrap-login100 ">
+			<div style="padding: 10px ;width: 446px; background: #978787; margin-left: 2px; border-radius: 15px;
+				margin-right: 2px;margin-bottom: 50px; margin-top: 10px; text-align: center">
+				<img src="login/images/logo.png" alt="HTML5 Icon" style="width:128px;height:128px;">
+				<p class="login100-form-title">
+					Welcome To<br>
+					<span style="color: green; font-family: Marko One; font-weight: bold" >ETH</span>
+					<span style="color: yellow; font-family: Marko One; font-weight: bold">HEALTH</span>
+					<span style="color: red; font-family: Marko One; font-weight: bold">CARE</span>
+				</p>
+			</div>
+			<form class="login100-form validate-form"  th:action="@{/authenticateTheUser}"  method="POST">
+
+				<div class="wrap-input100 validate-input m-b-16 m-r-10 m-l-10" style="text-align: left"
+					 data-validate = "Valid email is required: ex@abc.xyz">
+					<input class="input100" type="text" name="username"
+						   placeholder="Email" >
+					<span class="focus-input100"></span>
+					<span class="symbol-input100">
+							<span class="lnr lnr-envelope"></span>
+						</span>
+				</div>
+
+				<div class="wrap-input100 validate-input m-b-16 m-r-10 m-l-10" data-validate = "Password is required">
+					<input class="input100" type="password" name="password"
+						   placeholder="Password" >
+
+					<span class="focus-input100"></span>
+					<span class="symbol-input100">
+							<span class="lnr lnr-lock"></span>
+						</span>
+				</div>
+
+				<div class="container-login100-form-btn p-t-25  p-l-50 p-r-50  p-b-20">
+					<button class="login100-form-btn">
+						Login
+					</button>
+				</div>
+
+
+				<div th:if="${param.error != null}" class="text-center w-full p-t-10 " style="color: red" >
+							<span class="alart">
+							Wrong password or username
+						</span>
+				</div>
+
+				<div th:if="${param.logout != null}" class="text-center w-full p-t-10 " >
+							<span class="alart">
+							You have loggout successfully
+						</span>
+				</div>
+
+
+				<div class="text-center w-full p-t-15">
+						<span  style="color: grey">
+							Not a member?
+						</span>
+
+					<a class="txt1 bo1 hov1" th:href="@{/register}">
+						Sign up now
+					</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+
+
+<!--===============================================================================================-->
+<script src="login/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="login/vendor/bootstrap/js/popper.js"></script>
+<script src="login/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="login/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="login/js/main.js"></script>
+
+</body>
+</html>

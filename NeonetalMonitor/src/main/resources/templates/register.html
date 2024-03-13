@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet" type="text/css" href="login/css/main.css">
+
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="" />
+<meta name="author" content="" />
+<link rel="icon" href="favicon.ico" />
+
+<title>User Registration with Spring Boot</title>
+
+<!-- Bootstrap core CSS -->
+<link
+  href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+  crossorigin="anonymous" />
+
+	<link th:href="@{reg/css/style.css}" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="login/css/main.css">
+</head>
+
+<body class="cus-bg">
+
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100 ">
+      <div style="padding: 10px ;width: 446px; background: #978787; margin-left: 2px; border-radius: 15px;
+				margin-right: 2px;margin-bottom: 50px; margin-top: 10px; text-align: center">
+        <img src="login/images/logo.png" alt="HTML5 Icon" style="width:128px;height:128px;">
+        <p class="login100-form-title">
+          Welcome To<br>
+          <span style="color: green; font-family: Marko One; font-weight: bold">ETH</span>
+          <span style="color: yellow; font-family: Marko One; font-weight: bold">HEALTH</span>
+          <span style="color: red; font-family: Marko One; font-weight: bold">CARE</span>
+        </p>
+      </div>
+      <div class="text-center w-full p-t-15">
+        <h4>User Registration</h4>
+      </div>
+
+
+      <form autocomplete="off" action="#" th:action="@{/register}"
+            th:object="${user}" method="post" class="m-t" role="form"
+            data-toggle="validator">
+
+
+        <div th:if="${confirmationMessage}" class="alert alert-success"
+             role="alert" th:text=${confirmationMessage}></div>
+
+        <div th:if="${alreadyRegisteredMessage}"
+             class="alert alert-danger" role="alert"
+             th:text="${alreadyRegisteredMessage}"></div>
+
+
+        <div th:if="${#fields.hasErrors('firstName')}"
+             th:errors="*{firstName}"
+             class="validation-message alert alert-danger" role="alert"></div>
+
+        <div th:if="${#fields.hasErrors('lastName')}"
+             th:errors="*{lastName}"
+             class="validation-message alert alert-danger" role="alert"></div>
+
+
+
+        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+             class="validation-message alert alert-danger" role="alert"></div>
+
+        <div th:if="${#fields.hasErrors('password')}"
+             th:errors="*{password}"
+             class="validation-message alert alert-danger" role="alert"></div>
+
+
+        <div class="form-group input-group has-feedback">
+          <label th:if="${#fields.hasErrors('firstName')}"
+                 th:errors="*{firstName}" class="validation-message"></label>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-user"></span>
+          </span>
+
+          <input type="text" th:field="*{firstName}"
+                 placeholder="First Name" class="form-control" required />
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+        <div class="form-group input-group has-feedback">
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-user"></span>
+          </span>
+          <input type="text" th:field="*{lastName}"
+                 placeholder="Last Name" class="form-control" required />
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+        </div>
+
+        <div class="form-group input-group has-feedback">
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-envelope"></span>
+          </span>
+          <input type="email" th:field="*{email}"
+                 placeholder="Email Address" class="form-control"
+                 data-error="This email address is invalid" required />
+          <span class="glyphicon form-control-feedback"
+                aria-hidden="true"></span>
+
+        </div>
+
+
+
+
+        <div class="form-group input-group has-feedback">
+
+          <input type="radio"
+                 class="form-control" th:field="*{gender}" th:value="Male" /> Male<br>
+          <input type="radio"
+                 class="form-control" th:field="*{gender}" th:value="Female" /> Female<br>
+
+        </div>
+
+       <div class="container-login100-form-btn p-t-25  p-l-50 p-r-50  p-b-20">
+            <button type="submit"
+                    class="btn btn-primary block full-width m-b">Register</button>
+        </div>
+
+
+      </form>
+    </div>
+  </div>
+    <span><strong>Already have an account?</strong>><a class="txt1 bo1 hov1" th:href="@{/showMyLoginPage}">
+      <Strong>Log-in</Strong>>
+						</a></span> 
+       <p class="m-t">
+      
+      </p>
+    </div>
+
+
+
+  <!-- jQuery-->
+  <script
+    src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <!-- Bootstrap -->
+  <script
+    src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+
+  <!-- Bootstrap Validator plugin -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+
+ 
+</body>
+
+</html>
